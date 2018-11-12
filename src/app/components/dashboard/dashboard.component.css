@@ -1,8 +1,12 @@
 .dashboardContainer {
-    background-color: aqua;
+    background-color: lightgoldenrodyellow;
     height: 400px;
     margin: 10px;
     padding: 10px;
     overflow-x: hidden;
     width: 500px;
+}
+
+.contentLeave {
+    box-shadow: -2px 0 lightgray;
 }

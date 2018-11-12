@@ -1,4 +1,12 @@
-<div class="dashboardContainer">
+<div 
+  class="dashboardContainer"
+  [ngClass]="{
+    contentLeave:
+      (components[0].leave && components[0].enter) ||
+      (components[1].leave && components[1].enter) ||
+      (components[2].leave && components[2].enter)
+  }"
+>
   <app-slide-show 
     [enter]="!components[0].leave" 
     [leave]="components[0].leave"
