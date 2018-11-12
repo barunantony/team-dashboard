@@ -1,0 +1,12 @@
+.appContainer {
+    background-color: #fafafa;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    margin: 20px;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
