@@ -1,0 +1,26 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.clickableCard { 
+    background-color: transparent;
+    color: black;
+    border: 2px solid #d3d3d3;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    min-width: 200px;
+}
+
+.clickableCard:hover {
+    box-shadow: 
+        2px 2px #d3d3d3,
+        -2px -2px #d3d3d3,
+        -2px 2px #d3d3d3,
+        2px -2px #d3d3d3;
+    cursor: pointer;
+    font-weight: bold;
+}

@@ -1,0 +1,13 @@
+main {
+    align-items: center;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 16px;
+    padding: 16px;
+}
+
+.ticket {
+    margin-bottom: 16px;
+}
