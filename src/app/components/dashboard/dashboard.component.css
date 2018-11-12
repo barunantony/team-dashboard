@@ -1,0 +1,8 @@
+.dashboardContainer {
+    background-color: aqua;
+    height: 400px;
+    margin: 10px;
+    padding: 10px;
+    overflow-x: hidden;
+    width: 500px;
+}

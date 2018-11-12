@@ -1,0 +1,25 @@
+<div class="dashboardContainer">
+  <app-slide-show 
+    [enter]="!components[0].leave" 
+    [leave]="components[0].leave"
+    *ngIf="components[0].enter"
+  >
+    {{components[0].name}}
+  </app-slide-show>
+  
+  <app-slide-show 
+    [enter]="!components[1].leave" 
+    [leave]="components[1].leave"
+    *ngIf="components[1].enter"
+  >
+    {{components[1].name}}
+  </app-slide-show>
+  
+  <app-slide-show 
+    [enter]="!components[2].leave" 
+    [leave]="components[2].leave"
+    *ngIf="components[2].enter"
+  >
+    {{components[2].name}}
+  </app-slide-show>  
+</div>
