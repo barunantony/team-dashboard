@@ -1,12 +1,8 @@
 .appContainer {
     background-color: #fafafa;
-    bottom: 0;
     display: flex;
+    height: calc(100%);
     justify-content: center;
-    left: 0;
-    margin: 20px;
+    margin: 0;
     overflow-y: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
 }
