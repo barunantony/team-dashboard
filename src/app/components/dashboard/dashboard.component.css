@@ -1,0 +1,9 @@
+.dashboardContainer {
+    background-color: lightgoldenrodyellow;
+    height: 90%;
+    overflow-x: hidden;
+}
+
+.contentLeave {
+    box-shadow: -2px 0 lightgray;
+}
