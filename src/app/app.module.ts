@@ -11,6 +11,7 @@ import { CurrentSprintComponent } from './components/jira-dashboard-components/c
 import { TopDelayedStoriesComponent } from './components/jira-dashboard-components/top-delayed-stories/top-delayed-stories.component';
 import { TrafficDashboardComponent } from './components/traffic-dashboard/traffic-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
+import { XyChartComponent } from 'src/sharedComponents/xy-chart/xy-chart.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardComponent,
     SlideShowComponent,
     TopDelayedStoriesComponent,
-    TrafficDashboardComponent
+    TrafficDashboardComponent,
+    XyChartComponent
   ],
   imports: [
     AppRoutingModule,
