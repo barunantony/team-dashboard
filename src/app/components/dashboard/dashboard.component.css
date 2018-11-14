@@ -1,7 +1,9 @@
 .dashboardContainer {
-    background-color: lightgoldenrodyellow;
+    background-color: #000000;
     height: 90%;
+    margin-top: 16px; 
     overflow-x: hidden;
+    padding: 8px;
 }
 
 .contentLeave {

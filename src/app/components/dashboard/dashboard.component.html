@@ -1,5 +1,5 @@
-<main 
-  class="dashboardContainer"
+<main
+  class="dashboardContainer main"
   [ngClass]="{
     contentLeave:
       (components[0].leave && components[0].enter) ||
@@ -12,7 +12,7 @@
     [leave]="components[0].leave"
     *ngIf="components[0].enter"
   >
-    {{components[0].name}}
+    <app-current-sprint></app-current-sprint>
   </app-slide-show>
   
   <app-slide-show 
@@ -20,7 +20,7 @@
     [leave]="components[1].leave"
     *ngIf="components[1].enter"
   >
-    {{components[1].name}}
+    <app-top-delayed-stories></app-top-delayed-stories>
   </app-slide-show>
   
   <app-slide-show 
@@ -28,6 +28,6 @@
     [leave]="components[2].leave"
     *ngIf="components[2].enter"
   >
-    {{components[2].name}}
+    Placeholder for traffic-dashboard
   </app-slide-show>  
 </main>

@@ -1,0 +1,12 @@
+<div class="currentSprintContainer">
+  <div  
+    class="ticket"
+    *ngFor="let tkt of jiraTickets"
+  >
+    <app-clickable-cards
+      [name]="tkt.ticketNumber"
+      [url]="tkt.url"
+    >
+    </app-clickable-cards>
+  </div>
+</div>
