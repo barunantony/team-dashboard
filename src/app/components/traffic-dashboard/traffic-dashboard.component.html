@@ -1,3 +1,9 @@
-<p>
-  traffic-dashboard works!
-</p>
+<div class="trafficDashboardContainer">
+  <h1>Burndown Chart</h1>
+  <app-xy-chart 
+    [xyStatus]="xyStatusToPlot"
+    xAxisTitle="x axis title"
+    yAxisTitle="y axis title"
+  >
+  </app-xy-chart>
+</div>
