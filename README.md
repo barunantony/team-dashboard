@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Implemented the reusable component XY chart from below site 
+(https://auth0.com/blog/real-time-charts-using-angular-d3-and-socket-io/}

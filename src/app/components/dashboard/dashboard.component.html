@@ -1,33 +1,40 @@
-<main
-  class="dashboardContainer main"
-  [ngClass]="{
-    contentLeave:
-      (components[0].leave && components[0].enter) ||
-      (components[1].leave && components[1].enter) ||
-      (components[2].leave && components[2].enter)
-  }"
->
-  <app-slide-show 
-    [enter]="!components[0].leave" 
-    [leave]="components[0].leave"
-    *ngIf="components[0].enter"
+<div class="panel main">
+  <div class="sidePanel">
+      <a class="link" routerLink="/active-sprint">Active Sprint</a>
+      <a class="link" routerLink="/delayed-stories">Delayed app-top-delayed-stories</a>
+      <a class="link" routerLink="/traffic-dashboard">Burndown Chart</a>
+  </div>
+  <main
+    class="dashboardContainer"
+    [ngClass]="{
+      contentLeave:
+        (components[0].leave && components[0].enter) ||
+        (components[1].leave && components[1].enter) ||
+        (components[2].leave && components[2].enter)
+    }"
   >
-    <app-current-sprint></app-current-sprint>
-  </app-slide-show>
-  
-  <app-slide-show 
-    [enter]="!components[1].leave" 
-    [leave]="components[1].leave"
-    *ngIf="components[1].enter"
-  >
-    <app-top-delayed-stories></app-top-delayed-stories>
-  </app-slide-show>
-  
-  <app-slide-show 
-    [enter]="!components[2].leave" 
-    [leave]="components[2].leave"
-    *ngIf="components[2].enter"
-  >
-    <app-traffic-dashboard></app-traffic-dashboard>
-  </app-slide-show>  
-</main>
+    <app-slide-show 
+      [enter]="!components[0].leave" 
+      [leave]="components[0].leave"
+      *ngIf="components[0].enter"
+    >
+      <app-current-sprint></app-current-sprint>
+    </app-slide-show>
+    
+    <app-slide-show 
+      [enter]="!components[1].leave" 
+      [leave]="components[1].leave"
+      *ngIf="components[1].enter"
+    >
+      <app-top-delayed-stories></app-top-delayed-stories>
+    </app-slide-show>
+    
+    <app-slide-show 
+      [enter]="!components[2].leave" 
+      [leave]="components[2].leave"
+      *ngIf="components[2].enter"
+    >
+      <app-traffic-dashboard></app-traffic-dashboard>
+    </app-slide-show>
+  </main>
+</div>
