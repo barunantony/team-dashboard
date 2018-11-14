@@ -1,13 +1,21 @@
-main {
-    align-items: center;
+.currentSprintContainer {
     background-color: #ffffff;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    margin: 16px;
-    padding: 16px;
+    padding: 8px 8px 0;
 }
 
 .ticket {
-    margin-bottom: 16px;
+    margin: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+    .currentSprintContainer {
+        justify-content: center;
+    }
+
+    .ticket {
+        width: 100%;
+    }
 }

@@ -9,6 +9,6 @@ html, body {
     box-sizing: border-box;
 }
 
-main {
+.main {
     width: 90vw;
 }
