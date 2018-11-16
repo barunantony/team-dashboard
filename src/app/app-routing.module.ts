@@ -5,12 +5,13 @@ import { CurrentSprintComponent } from "./components/jira-dashboard-components/c
 import { TopDelayedStoriesComponent } from "./components/jira-dashboard-components/top-delayed-stories/top-delayed-stories.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { TrafficDashboardComponent } from "./components/traffic-dashboard/traffic-dashboard.component";
+import { paths } from 'src/utils/constants';
 
 const appRoutes: Routes = [
-    { path: '', component: DashboardComponent },
-    { path: 'active-sprint', component: CurrentSprintComponent },
-    { path: 'delayed-stories', component: TopDelayedStoriesComponent },
-    { path: 'traffic-dashboard', component: TrafficDashboardComponent },
+    { path: paths.root, component: DashboardComponent },
+    { path: paths.activeSprint, component: CurrentSprintComponent },
+    { path: paths.delayedStories, component: TopDelayedStoriesComponent },
+    { path: paths.chart, component: TrafficDashboardComponent },
 ];
 
 @NgModule({

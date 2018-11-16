@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { XYData } from 'src/sharedComponents/xy-chart/xy-data';
 import { JiraService } from 'src/services/jira-service/jira.service';
+import { Router } from '@angular/router';
+
+import { paths } from 'src/utils/constants';
 
 @Component({
   selector: 'app-traffic-dashboard',
@@ -9,6 +12,7 @@ import { JiraService } from 'src/services/jira-service/jira.service';
 })
 export class TrafficDashboardComponent {
 
+  activeLink: boolean;
   xyStatus: XYData[];
   xyStatusToPlot: XYData[];
 
@@ -17,8 +21,16 @@ export class TrafficDashboardComponent {
     this.xyStatusToPlot = [...status];// this.xyStatus.slice(0, this.xyStatus.length);
   }
 
-  constructor(private jiraServices: JiraService) {
+  constructor(private jiraServices: JiraService, private router: Router) {
     this.XYStatus = jiraServices.getBurnDownChartForXYChart();
+  }
+
+  ngOnInit() {
+    this.activeLink = this.router.url === `/${paths.chart}`;
+  }
+
+  navigateBack () {
+    this.router.navigate(['']);
   }
 
 }
