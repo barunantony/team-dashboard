@@ -1,3 +1,11 @@
 <p>
   top-delayed-stories works!
 </p>
+<app-button
+  [ngClass]="{backBtn: activeLink, hideBtn: !activeLink}"
+  buttonStyle="backButton"
+  buttonType="button"
+  buttonName="back to dashboard"
+  [onClick]="navigateBack.bind(this)"
+>
+</app-button>

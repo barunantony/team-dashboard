@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JiraService } from 'src/services/jira-service/jira.service';
+import { Router } from '@angular/router';
+
+import { paths } from 'src/utils/constants';
 
 @Component({
   selector: 'app-current-sprint',
@@ -8,12 +11,18 @@ import { JiraService } from 'src/services/jira-service/jira.service';
 })
 export class CurrentSprintComponent implements OnInit {
 
+  activeLink: boolean;
   jiraTickets: {ticketNumber: string, url: string}[];
 
-  constructor(private jiraService: JiraService) { }
+  constructor(private jiraService: JiraService, private router: Router) { }
 
   ngOnInit() {
     this.jiraTickets = this.jiraService.getFlaggedTicketsOfCurrentSprint();
+    this.activeLink = this.router.url === `/${paths.activeSprint}`;
+  }
+
+  navigateBack () {
+    this.router.navigate(['']);
   }
 
 }

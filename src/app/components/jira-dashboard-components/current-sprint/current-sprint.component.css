@@ -19,3 +19,11 @@
         width: 100%;
     }
 }
+
+.backBtn {
+    background-color: transparent;
+}
+
+.hideBtn {
+    display: none;
+}

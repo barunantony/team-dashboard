@@ -12,10 +12,12 @@ import { TopDelayedStoriesComponent } from './components/jira-dashboard-componen
 import { TrafficDashboardComponent } from './components/traffic-dashboard/traffic-dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { XyChartComponent } from 'src/sharedComponents/xy-chart/xy-chart.component';
+import { ButtonComponent } from 'src/sharedComponents/button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ButtonComponent,
     ClickableCardsComponent,
     CurrentSprintComponent,
     DashboardComponent,
