@@ -1,6 +1,10 @@
+.header {
+    width: 100%;
+    height: 25px;;
+}
+
 .appContainer {
     background-color: #fafafa;
-    display: flex;
     height: 100%;
     justify-content: center;
     margin: 0;
