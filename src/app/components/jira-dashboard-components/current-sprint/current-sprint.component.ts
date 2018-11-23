@@ -17,7 +17,7 @@ export class CurrentSprintComponent implements OnInit {
   constructor(private jiraService: JiraService, private router: Router) { }
 
   ngOnInit() {
-    this.jiraService.getFlaggedTicketsOfCurrentSprint().then((data) => {
+    this.jiraService.getFlaggedTicketsOfCurrentSprint().then((data = []) => {
       this.jiraTickets = data;
     });
     this.activeLink = this.router.url === `/${paths.activeSprint}`;

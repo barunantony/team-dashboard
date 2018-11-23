@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { XYData } from "src/sharedComponents/xy-chart/xy-data";
+import { LoggerService } from "../logger-service/logger.service";
 
 @Injectable({
     providedIn: 'root',
@@ -20,7 +21,7 @@ export class JiraService {
 n
     private topTenDelayedStories: {ticketNumber: string, url: string}[] = [];
 
-    constructor() {
+    constructor(loggerService: LoggerService) {
         /** fetch flagged tickets */
         this.flaggedTicketsLoading = 
             fetch(
@@ -32,7 +33,9 @@ n
             ).then((res) => res.json())
                 .then((jsonRes) =>  {
                     this.flaggedTickets = jsonRes && jsonRes.body;
-                });
+                }).catch((err) => {
+                    loggerService.logMessage(err);
+                  });
 
         /** fetch burndown data */
         this.burndownDataLoading = 
@@ -45,7 +48,9 @@ n
             ).then((res) => res.json())
                 .then((jsonRes) =>  {
                     this.burndownData = jsonRes && jsonRes.body;
-                });
+                }).catch((err) => {
+                    loggerService.logMessage(err);
+                  });
     }
 
     /**
