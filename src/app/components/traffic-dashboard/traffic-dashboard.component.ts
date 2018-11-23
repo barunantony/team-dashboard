@@ -22,7 +22,9 @@ export class TrafficDashboardComponent {
   }
 
   constructor(private jiraServices: JiraService, private router: Router) {
-    this.XYStatus = jiraServices.getBurnDownChartForXYChart();
+    jiraServices.getBurnDownChartForXYChart().then((data = []) => {
+      this.XYStatus = (<XYData[]>data);
+    });
   }
 
   ngOnInit() {
