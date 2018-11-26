@@ -13,6 +13,8 @@ import { TrafficDashboardComponent } from './components/traffic-dashboard/traffi
 import { AppRoutingModule } from './app-routing.module';
 import { XyChartComponent } from 'src/sharedComponents/xy-chart/xy-chart.component';
 import { ButtonComponent } from 'src/sharedComponents/button/button.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { ButtonComponent } from 'src/sharedComponents/button/button.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
