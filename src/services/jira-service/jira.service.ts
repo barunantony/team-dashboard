@@ -18,6 +18,9 @@ export class JiraService {
      * */
     private burndownData: { xAxis: {x: number}, yAxis: { y: number}[]}[];
     private burndownDataLoading: Promise<void>;
+
+    private jiraTicket: any;
+    private jiraTicketsLoading: Promise<void>;
 n
     private topTenDelayedStories: {ticketNumber: string, url: string}[] = [];
 
@@ -51,6 +54,21 @@ n
                 }).catch((err) => {
                     loggerService.logMessage(err);
                   });
+
+        /** fetch jira ticket */
+        this.jiraTicketsLoading = 
+        fetch(
+            'https://tcensr8hxe.execute-api.us-east-2.amazonaws.com/dev/api-team-dashboard/tickets',
+            {
+                method: 'POST',
+                body: JSON.stringify({key: 'jiraticket', issueNumber: 'SSH-4100'})
+            }
+        ).then((res) => res.json())
+            .then((jsonRes) =>  {
+                this.jiraTicket = jsonRes && jsonRes.body;
+            }).catch((err) => {
+                loggerService.logMessage(err);
+              });
     }
 
     /**
