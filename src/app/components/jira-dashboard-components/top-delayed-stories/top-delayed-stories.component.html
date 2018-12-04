@@ -14,6 +14,9 @@
     <app-clickable-cards
       [name]="tkt.ticketNumber"
       [url]="tkt.url"
+      [status]="tkt.fields.status.name"
+      [summary]="tkt.fields.summary"
+      [created]="tkt.fields.created"
     >
     </app-clickable-cards>
   </div>

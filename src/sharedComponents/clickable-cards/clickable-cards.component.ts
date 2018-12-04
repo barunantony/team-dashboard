@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ClickableCardsComponent implements OnInit {
   @Input() name: string = "empty name";
   @Input() url: string;
+  @Input() summary: string;
+  @Input() status: string;
+  @Input() created: string;
 
   constructor() { }
 

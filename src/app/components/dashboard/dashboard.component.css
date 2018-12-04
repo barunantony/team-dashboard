@@ -20,6 +20,12 @@
     flex: 80%;
 }
 
+@media only screen and (max-width: 600px) {
+    .dashboardContainer {
+        padding: 0;
+    }
+}
+
 .contentLeave {
     box-shadow: -2px 0 lightgray;
 }

@@ -11,8 +11,10 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 50px;
-    min-width: 200px;
+    max-height: 50px;
+    min-width: 350px;
     box-shadow: 
         1px 1px 2px #d3d3d3,
         -1px -1px 2px #d3d3d3,
@@ -20,8 +22,25 @@ a {
         1px -1px 2px #d3d3d3;
     cursor: pointer;
     font-weight: bold;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .clickableCard {
+        min-width: 200px;  
+    } 
 }
 
 .clickableCard:hover {
     background-color: #d3d3d3;
+}
+.summary, .status, .created {
+    font-size: 90%;
+    font-weight: normal;
+}
+
+.info {
+    position: relative;
+    top: -48px;
+    left: 5px;
 }
