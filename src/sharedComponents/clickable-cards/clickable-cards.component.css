@@ -39,6 +39,14 @@ a {
     font-weight: normal;
 }
 
+.summary {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
 .info {
     position: relative;
     top: -48px;
