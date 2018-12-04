@@ -1,8 +1,15 @@
-<a 
-  class="clickableCard" 
-  [href]="url"
-  target="blank"
-  rel="noreferrer noopener"
->
-  {{name}}
-</a>
+<div>
+  <a 
+    class="clickableCard" 
+    [href]="url"
+    target="blank"
+    rel="noreferrer noopener"
+  >
+    <span>{{name}}</span>
+    <span class="summary" *ngIf="!!summary">{{summary}}</span>
+  </a>
+  <span class="info">
+      <span class="status" *ngIf="!!status">{{status}}</span>
+      <span class="created" *ngIf="!!created"> | {{created | date}}</span>
+    </span>
+</div>
