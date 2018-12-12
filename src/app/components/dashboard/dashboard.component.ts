@@ -16,9 +16,9 @@ export class DashboardComponent implements OnDestroy {
 
   constructor () {
     this.components = [
-      { enter: true, leave: false, name: 'c1', stay: 1 },
-      { enter: false, leave: false, name: 'c2', stay: 2 },
-      { enter: false, leave: false, name: 'c3', stay: 3 },
+      { enter: true, leave: false, name: '', stay: 1 },
+      { enter: false, leave: false, name: '', stay: 2 },
+      { enter: false, leave: false, name: '', stay: 3 },
     ];
     this.component = this.components[0];
     let count = 1;
