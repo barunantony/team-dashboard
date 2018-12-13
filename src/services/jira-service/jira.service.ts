@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { LoggerService } from "../logger-service/logger.service";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
 })
 export class JiraService {
 
-    private projectID = '';
+    private projectID = 'SSH';
 
      /** Example: [{ticketNumber: 'RP-101', url: 'http://jira.com/RP-101'}] */
     private flaggedTickets: {ticketNumber: string, url: string}[];
@@ -22,6 +23,8 @@ export class JiraService {
      * */
     private burndownData: { xAxis: {x: number}, yAxis: { y: number}[]}[];
     private burndownDataLoading: Promise<void>;
+
+    private changeInAppProjectID = new Subject();
 
     /** fetch flagged tickets */
     fetchFlaggedTickets (): Promise<void> {
@@ -79,8 +82,12 @@ export class JiraService {
         this.burndownDataLoading = this.fetchBurndownData();
     }
 
+    /** constructor */
     constructor(private loggerService: LoggerService) {
-        this.refreshTheAppData();        
+        this.refreshTheAppData();
+        this.changeInAppProjectID.subscribe(() => {
+            this.refreshTheAppData();
+        });
     }
 
     /**
@@ -115,5 +122,10 @@ export class JiraService {
 
     setProjectID (val) {
         this.projectID = val;
+        this.changeInAppProjectID.next();
+    }
+
+    getProjectID () {
+        return this.projectID;
     }
 }

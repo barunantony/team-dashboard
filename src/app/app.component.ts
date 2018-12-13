@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JiraService } from 'src/services/jira-service/jira.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'team-dashboard';
+  projectID;
+
+  constructor(private jiraServices: JiraService) {
+    this.projectID = jiraServices.getProjectID();
+  }
+
+  onChangeProjectID(event: any) {
+    console.log(event.target.value);
+    this.jiraServices.setProjectID(event.target.value);
+  }
 }

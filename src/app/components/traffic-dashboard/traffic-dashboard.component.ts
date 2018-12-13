@@ -34,5 +34,4 @@ export class TrafficDashboardComponent {
   navigateBack () {
     this.router.navigate(['']);
   }
-
 }
