@@ -1,4 +1,6 @@
 <div class="appContainer">
-  <div class="header"></div>
+  <div class="header">
+    <input class="projectID" [placeholder]="projectID + ' &#x23ce;'" type="text" (change)="onChangeProjectID($event)">
+  </div>
   <router-outlet></router-outlet>
 </div>

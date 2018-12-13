@@ -21,18 +21,23 @@ export class TrafficDashboardComponent {
     this.xyStatusToPlot = [...status];// this.xyStatus.slice(0, this.xyStatus.length);
   }
 
-  constructor(private jiraServices: JiraService, private router: Router) {
-    jiraServices.getBurnDownChartForXYChart().then((data = []) => {
-      this.XYStatus = (<XYData[]>data);
-    });
-  }
+  constructor(private jiraServices: JiraService, private router: Router) {}
 
   ngOnInit() {
+    this.jiraServices.getBurnDownChartForXYChart().then((data = []) => {
+      this.XYStatus = (<XYData[]>data);
+    });
     this.activeLink = this.router.url === `/${paths.chart}`;
+
+
+    this.jiraServices.changeInAppProjectID.subscribe(() => {
+      this.jiraServices.getBurnDownChartForXYChart().then((data = []) => {
+        this.XYStatus = (<XYData[]>data);
+      });
+    });
   }
 
   navigateBack () {
     this.router.navigate(['']);
   }
-
 }
