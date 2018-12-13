@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
-import { XYData } from "src/sharedComponents/xy-chart/xy-data";
 import { LoggerService } from "../logger-service/logger.service";
 
 @Injectable({
     providedIn: 'root',
 })
 export class JiraService {
+
+    private projectID = '';
 
      /** Example: [{ticketNumber: 'RP-101', url: 'http://jira.com/RP-101'}] */
     private flaggedTickets: {ticketNumber: string, url: string}[];
@@ -22,51 +23,64 @@ export class JiraService {
     private burndownData: { xAxis: {x: number}, yAxis: { y: number}[]}[];
     private burndownDataLoading: Promise<void>;
 
-    constructor(private loggerService: LoggerService) {
-        /** fetch flagged tickets */
-        this.flaggedTicketsLoading = 
-            fetch(
-                'https://tcensr8hxe.execute-api.us-east-2.amazonaws.com/dev/api-team-dashboard/tickets',
-                {
-                    method: 'POST',
-                    body: JSON.stringify({key: 'flaggedTickets'})
-                }
+    /** fetch flagged tickets */
+    fetchFlaggedTickets (): Promise<void> {
+        return fetch(
+            'https://tcensr8hxe.execute-api.us-east-2.amazonaws.com/dev/api-team-dashboard/tickets',
+            {
+                method: 'POST',
+                body: JSON.stringify({key: 'flaggedTickets', projectID: this.projectID })
+            }
             ).then((res) => res.json())
                 .then((jsonRes) =>  {
                     this.flaggedTickets = jsonRes && jsonRes.body;
                 }).catch((err) => {
                     this.loggerService.logMessage(err);
-                  });
+                });
+    }
 
-        /** fetch long pending stories created but not taken to active spring */
-        this.topTenDelayedStoriesLoading = 
-        fetch(
+    /** fetch long pending stories created but not taken to active spring */
+    fetchTopTenDelayedTickets (): Promise<void> {
+        return fetch(
             'https://tcensr8hxe.execute-api.us-east-2.amazonaws.com/dev/api-team-dashboard/tickets',
             {
                 method: 'POST',
-                body: JSON.stringify({key: 'longOpenStories'})
+                body: JSON.stringify({key: 'longOpenStories', projectID: this.projectID})
             }
-        ).then((res) => res.json())
-            .then((jsonRes) =>  {
-                this.topTenDelayedStories = jsonRes && jsonRes.body;
-            }).catch((err) => {
-                this.loggerService.logMessage(err);
-              });
+            ).then((res) => res.json())
+                .then((jsonRes) =>  {
+                    this.topTenDelayedStories = jsonRes && jsonRes.body;
+                }).catch((err) => {
+                    this.loggerService.logMessage(err);
+                });
+    }
 
-        /** fetch burndown data */
-        this.burndownDataLoading = 
-            fetch(
-                'https://tcensr8hxe.execute-api.us-east-2.amazonaws.com/dev/api-team-dashboard/tickets',
-                {
-                    method: 'POST',
-                    body: JSON.stringify({key: 'burndown'})
-                }
+    /** fetch burndown data */
+    fetchBurndownData (): Promise<void> {
+        return fetch(
+            'https://tcensr8hxe.execute-api.us-east-2.amazonaws.com/dev/api-team-dashboard/tickets',
+            {
+                method: 'POST',
+                body: JSON.stringify({key: 'burndown', projectID: this.projectID})
+            }
             ).then((res) => res.json())
                 .then((jsonRes) =>  {
                     this.burndownData = jsonRes && jsonRes.body;
                 }).catch((err) => {
                     this.loggerService.logMessage(err);
-                  });
+                });
+    }
+
+    refreshTheAppData () {
+        this.flaggedTicketsLoading = this.fetchFlaggedTickets();
+            
+        this.topTenDelayedStoriesLoading =  this.fetchTopTenDelayedTickets();
+        
+        this.burndownDataLoading = this.fetchBurndownData();
+    }
+
+    constructor(private loggerService: LoggerService) {
+        this.refreshTheAppData();        
     }
 
     /**
@@ -97,5 +111,9 @@ export class JiraService {
                  res(this.burndownData);
              });
          });
+    }
+
+    setProjectID (val) {
+        this.projectID = val;
     }
 }
