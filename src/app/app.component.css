@@ -13,3 +13,7 @@
     overflow-y: auto;
     width: 100%;
 }
+
+.projectID {
+    width: 75px;
+}

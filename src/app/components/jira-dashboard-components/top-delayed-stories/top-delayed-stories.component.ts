@@ -21,6 +21,12 @@ export class TopDelayedStoriesComponent implements OnInit {
       this.jiraTickets = data;
     });
     this.activeLink = this.router.url === `/${paths.delayedStories}`;
+
+    this.jiraService.changeInAppProjectID.subscribe(() => {
+      this.jiraService.getTopTenDelayedStories().then((data = []) => {
+        this.jiraTickets = data;
+      });
+    });
   }
 
   navigateBack () {

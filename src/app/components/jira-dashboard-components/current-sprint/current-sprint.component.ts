@@ -21,6 +21,12 @@ export class CurrentSprintComponent implements OnInit {
       this.jiraTickets = data;
     });
     this.activeLink = this.router.url === `/${paths.activeSprint}`;
+
+    this.jiraService.changeInAppProjectID.subscribe(() => {
+      this.jiraService.getFlaggedTicketsOfCurrentSprint().then((data = []) => {
+        this.jiraTickets = data;
+      });
+    });
   }
 
   navigateBack () {

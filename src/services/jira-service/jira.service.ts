@@ -24,7 +24,7 @@ export class JiraService {
     private burndownData: { xAxis: {x: number}, yAxis: { y: number}[]}[];
     private burndownDataLoading: Promise<void>;
 
-    private changeInAppProjectID = new Subject();
+    public changeInAppProjectID = new Subject();
 
     /** fetch flagged tickets */
     fetchFlaggedTickets (): Promise<void> {
